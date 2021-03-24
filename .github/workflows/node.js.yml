@@ -11,7 +11,8 @@ on:
 
 jobs:
   build:
-
+  Test:
+    needs: build
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,7 +28,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - uses: actions/download-artifact@main
-    needs: build
+      with:
         name: webpack artifacts
         path: public
     - run: npm ci
