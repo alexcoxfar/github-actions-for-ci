@@ -27,7 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - uses: actions/download-artifact@main
-      with: 
+    needs: build
         name: webpack artifacts
         path: public
     - run: npm ci
